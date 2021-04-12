@@ -1,6 +1,8 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:desafio_flutter/API.dart';
+import 'package:desafio_flutter/blocs/character_bloc.dart';
+import 'package:desafio_flutter/pages/screens_page.dart';
 import 'package:flutter/material.dart';
-import 'package:desafio_flutter/pages/home_page.dart';
 
 void main() {
   Api api = Api();
@@ -11,9 +13,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'StarWars Wiki',
-      home: Home(),
+    return BlocProvider(
+      bloc: CharacterBloc(),
+      child: MaterialApp(
+        title: 'StarWars Wiki',
+        home: ScreenPage(),
+      ),
     );
   }
 }
