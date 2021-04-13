@@ -15,9 +15,7 @@ class Api {
   List<Character> decode(http.Response response) {
     if (response.statusCode == 200) {
       var decoded = json.decode(response.body);
-      if (decoded["next"] != null) {
-        _nextPage = decoded["next"][34];
-      }
+      _nextPage = decoded["next"];
 
       List<Character> character = decoded["results"].map<Character>((map) {
         return Character.fromJson(map);
@@ -41,8 +39,11 @@ class Api {
   }
 
   nexPage() async {
-    var url = Uri.parse('https://swapi.dev/api/people/?page=$_nextPage');
-    http.Response response = await http.get(url);
-    return decode(response);
+    if (_nextPage != null) {
+      _nextPage = _nextPage[34];
+      var url = Uri.parse('https://swapi.dev/api/people/?page=$_nextPage');
+      http.Response response = await http.get(url);
+      return decode(response);
+    }
   }
 }

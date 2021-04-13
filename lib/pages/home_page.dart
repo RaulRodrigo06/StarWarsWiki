@@ -26,7 +26,7 @@ class Home extends StatelessWidget {
                 itemBuilder: (context, index) {
                   if (index < snapshot.data.length) {
                     return CharacterTile(snapshot.data[index]);
-                  } else if (index > 1) {
+                  } else if (index > 1 && snapshot.data.length < 82) {
                     bloc.list();
                     return Container(
                       height: 40,
