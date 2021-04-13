@@ -20,7 +20,6 @@ class CharacterBloc implements BlocBase {
 
   void list() async {
     character += await api.nexPage();
-
     _characterController.sink.add(character);
   }
 

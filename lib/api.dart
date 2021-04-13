@@ -42,7 +42,7 @@ class Api {
     http.Response response = await http.get(url);
     var decoded = json.decode(response.body);
     Specie specie = Specie.fromJson(decoded);
-    return specie;
+    return specie.name;
   }
 
   Future getHomeWorld(String urlHomeWorld) async {
@@ -51,7 +51,7 @@ class Api {
     http.Response response = await http.get(url);
     var decoded = json.decode(response.body);
     HomeWorld homeworld = HomeWorld.fromJson(decoded);
-    return homeworld;
+    return homeworld.name;
   }
 
   showList() async {

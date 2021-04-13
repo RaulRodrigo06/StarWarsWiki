@@ -1,3 +1,5 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:desafio_flutter/blocs/fav_bloc.dart';
 import 'package:desafio_flutter/models/characters.dart';
 import 'package:desafio_flutter/widgets/character_full_tile.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ class CharacterTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<FavBloc>(context);
     return GestureDetector(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -52,6 +55,25 @@ class CharacterTile extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
+              StreamBuilder<Map<String, Character>>(
+                stream: bloc.outFav,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return IconButton(
+                      icon: Icon(snapshot.data.containsKey(character.name)
+                          ? Icons.star
+                          : Icons.star_border),
+                      color: Colors.white,
+                      iconSize: 30,
+                      onPressed: () {
+                        bloc.toggleFav(character);
+                      },
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                },
+              )
             ],
           ),
         ),

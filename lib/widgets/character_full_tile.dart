@@ -75,7 +75,7 @@ class CharacterFullTile extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     character.homeWorld != null
-                        ? "Nome do Planeta: ${character.homeWorld.name}"
+                        ? "Nome do Planeta: ${character.homeWorld}"
                         : "Nome do Planeta: Desconhecido",
                     style: TextStyle(color: Colors.white),
                   ),
@@ -84,7 +84,7 @@ class CharacterFullTile extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     character.specie != null
-                        ? "Espécie: ${character.specie.name}"
+                        ? "Espécie: ${character.specie}"
                         : "Espécie: Desconhecida",
                     style: TextStyle(color: Colors.white),
                   ),

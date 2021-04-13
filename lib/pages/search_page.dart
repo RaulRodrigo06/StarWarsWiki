@@ -2,6 +2,7 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:desafio_flutter/blocs/character_search_bloc.dart';
 import 'package:desafio_flutter/delegates/search_delegate.dart';
 import 'package:desafio_flutter/widgets/character_tile.dart';
+import 'package:desafio_flutter/widgets/search_null_tile.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
@@ -36,7 +37,7 @@ class SearchPage extends StatelessWidget {
               itemCount: snapshot.data.length,
             );
           else
-            return Container();
+            return SearchTileNull();
         },
       ),
     );
