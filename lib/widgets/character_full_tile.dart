@@ -46,21 +46,21 @@ class CharacterFullTile extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Cor do Cabelo: ${character.hair_color}",
+                    "Cor do Cabelo: ${character.hairColor}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Cor da Pele: ${character.skin_color}",
+                    "Cor da Pele: ${character.skinColor}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Data de Nascimento: ${character.birth_year}",
+                    "Data de Nascimento: ${character.birthYear}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -75,6 +75,15 @@ class CharacterFullTile extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "Nome do Planeta: ${character.homeworld}",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    character.specie != null
+                        ? "Espécie: ${character.specie.name}"
+                        : 'Espécie: Inexistente',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
