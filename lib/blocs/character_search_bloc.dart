@@ -4,34 +4,29 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:desafio_flutter/models/characters.dart';
 import 'package:rxdart/rxdart.dart';
 
-class CharacterBloc implements BlocBase {
+class CharacterSearchBloc implements BlocBase {
   Api api;
-  List<Character> character;
+  List<Character> charactersearch;
 
   final BehaviorSubject<List<Character>> _characterController =
       BehaviorSubject<List<Character>>();
   Stream<List<Character>> get outCharacter => _characterController.stream;
-  final BehaviorSubject<String> _listController = BehaviorSubject();
+  final BehaviorSubject<String> _searchController = BehaviorSubject();
+  Sink get inSearch => _searchController.sink;
 
-  CharacterBloc() {
+  CharacterSearchBloc() {
     api = Api();
-    show();
+    _searchController.stream.listen(_search);
   }
 
-  void list() async {
-    character += await api.nexPage();
-
-    _characterController.sink.add(character);
-  }
-
-  void show() async {
-    character = await api.showList();
-    _characterController.sink.add(character);
+  void _search(String search) async {
+    charactersearch = await api.showSearch(search);
+    _characterController.sink.add(charactersearch);
   }
 
   @override
   void dispose() {
     _characterController.close();
-    _listController.close();
+    _searchController.close();
   }
 }

@@ -1,6 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:desafio_flutter/blocs/character_bloc.dart';
-import 'package:desafio_flutter/widgets/search_tile.dart';
+import 'package:desafio_flutter/widgets/character_tile.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -27,7 +27,7 @@ class Home extends StatelessWidget {
                   if (index < snapshot.data.length) {
                     return CharacterTile(snapshot.data[index]);
                   } else if (index > 1) {
-                    bloc.inSearch.add(null);
+                    bloc.list();
                     return Container(
                       height: 40,
                       width: 40,
