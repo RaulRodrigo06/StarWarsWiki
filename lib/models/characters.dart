@@ -1,3 +1,4 @@
+import 'package:desafio_flutter/models/homeworld.dart';
 import 'package:desafio_flutter/models/specie.dart';
 
 class Character {
@@ -9,8 +10,9 @@ class Character {
   final String skinColor;
   final String eyeColor;
   final String birthYear;
-  final String homeworld;
+  final String urlHomeWorld;
   final List speciesUrl;
+  HomeWorld homeWorld;
   Specie specie;
 
   Character(
@@ -22,7 +24,8 @@ class Character {
       this.skinColor = '',
       this.eyeColor = '',
       this.birthYear = '',
-      this.homeworld = '',
+      this.urlHomeWorld = '',
+      this.homeWorld,
       this.specie,
       this.speciesUrl});
 
@@ -36,7 +39,7 @@ class Character {
         skinColor: json["skin_color"],
         eyeColor: json["eye_color"],
         birthYear: json["birth_year"],
-        homeworld: json["homeworld"],
+        urlHomeWorld: json["homeworld"],
         speciesUrl: json["species"]);
   }
 }
