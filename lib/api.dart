@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:desafio_flutter/models/homeworld.dart';
+import 'package:desafio_flutter/models/post_request_model.dart';
 import 'package:desafio_flutter/models/specie.dart';
 import 'package:http/http.dart' as http;
 
@@ -77,5 +78,18 @@ class Api {
     var url = Uri.parse(_nextPage);
     http.Response response = await http.get(url);
     return decode(response);
+  }
+
+  sendFav(String name) async {
+    var url = Uri.parse(
+        'https://private-782d3-starwarsfavorites.apiary-mock.com/favorite/$name');
+    http.Response response = await http.post(url, body: {"id": name});
+    if (response.statusCode == 201) {
+      final String responseString = response.body;
+      final PostRequestModel postResponse =
+          postRequestModelFromJson(responseString);
+      print(postResponse.status);
+      print(postResponse.message);
+    }
   }
 }

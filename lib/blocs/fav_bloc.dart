@@ -6,13 +6,17 @@ import 'package:desafio_flutter/models/characters.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../api.dart';
+
 class FavBloc implements BlocBase {
+  Api api;
   Map<String, Character> _favs = {};
 
   final _favController = BehaviorSubject<Map<String, Character>>(seedValue: {});
   Stream<Map<String, Character>> get outFav => _favController.stream;
 
   FavBloc() {
+    api = Api();
     SharedPreferences.getInstance().then((prefs) {
       if (prefs.getKeys().contains("favorites")) {
         _favs = json.decode(prefs.getString("favorites")).map((k, v) {
@@ -28,9 +32,9 @@ class FavBloc implements BlocBase {
       _favs.remove(character.name);
     } else {
       _favs[character.name] = character;
+      api.sendFav(character.name);
     }
     _favController.sink.add(_favs);
-
     _saveFav();
   }
 
