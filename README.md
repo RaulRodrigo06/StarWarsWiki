@@ -40,7 +40,7 @@ Ao clicar em um item da lista o seu app deve mostrar as informações abaixo: �
 
 A busca pelo nome do planeta e da espécie deve ser feita em paralelo. ✅
 
-### Favoritos => É possível favoritar cada um dos personagens ao clicar no ícone de estrela de cada um deles, estes aparecerão numa nova aba, chamada "Favoritos". Também é possível desfavoritar nessa aba.
+### Favoritos => É possível favoritar cada um dos personagens ao clicar no ícone de estrela de cada um deles, estes aparecerão numa nova aba, chamada "Favoritos". Também é possível desfavoritar nessa aba. Além disso, os favoritos estão sendo armazenados localmente e atualizados sempre q o app é aberto.
 
 
 Na lista e nos detalhes deve ser possível adicionar e remover um personagem a sua lista de favoritos. Tambem deve ser possível filtrar quais personagens foram favoritados na lista principal.
