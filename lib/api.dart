@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'models/characters.dart';
 
 class Api {
-  String _nextPage;
+  String _nextPage = "http://swapi.dev/api/people/?page=2";
   int count;
 
   List<Character> decode(http.Response response) {
@@ -73,11 +73,9 @@ class Api {
   }
 
   nexPage() async {
-    if (_nextPage != null) {
-      _nextPage = _nextPage[34];
-      var url = Uri.parse('https://swapi.dev/api/people/?page=$_nextPage');
-      http.Response response = await http.get(url);
-      return decode(response);
-    }
+    _nextPage = _nextPage.replaceFirst('http', 'https');
+    var url = Uri.parse(_nextPage);
+    http.Response response = await http.get(url);
+    return decode(response);
   }
 }

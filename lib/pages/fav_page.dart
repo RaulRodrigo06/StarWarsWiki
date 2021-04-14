@@ -3,7 +3,6 @@ import 'package:desafio_flutter/blocs/fav_bloc.dart';
 import 'package:desafio_flutter/models/characters.dart';
 import 'package:desafio_flutter/widgets/character_tile.dart';
 import 'package:desafio_flutter/widgets/fav_null_tile.dart';
-import 'package:desafio_flutter/widgets/search_null_tile.dart';
 import 'package:flutter/material.dart';
 
 class FavPage extends StatefulWidget {
