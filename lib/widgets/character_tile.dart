@@ -70,7 +70,9 @@ class CharacterTile extends StatelessWidget {
                       },
                     );
                   } else {
-                    return CircularProgressIndicator();
+                    return CircularProgressIndicator(
+                      backgroundColor: Colors.white,
+                    );
                   }
                 },
               )

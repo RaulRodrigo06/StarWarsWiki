@@ -41,18 +41,26 @@ class Api {
     urlSpecie = urlSpecie.replaceFirst('http', 'https');
     var url = Uri.parse(urlSpecie);
     http.Response response = await http.get(url);
-    var decoded = json.decode(response.body);
-    Specie specie = Specie.fromJson(decoded);
-    return specie.name;
+    if (response.statusCode == 200) {
+      var decoded = json.decode(response.body);
+      Specie specie = Specie.fromJson(decoded);
+      return specie.name;
+    } else {
+      throw Exception("Failed to load Character Species");
+    }
   }
 
   Future getHomeWorld(String urlHomeWorld) async {
     urlHomeWorld = urlHomeWorld.replaceFirst('http', 'https');
     var url = Uri.parse(urlHomeWorld);
     http.Response response = await http.get(url);
-    var decoded = json.decode(response.body);
-    HomeWorld homeworld = HomeWorld.fromJson(decoded);
-    return homeworld.name;
+    if (response.statusCode == 200) {
+      var decoded = json.decode(response.body);
+      HomeWorld homeworld = HomeWorld.fromJson(decoded);
+      return homeworld.name;
+    } else {
+      throw Exception("Failed to load Character HomeWorld");
+    }
   }
 
   showList() async {
@@ -90,6 +98,9 @@ class Api {
           postRequestModelFromJson(responseString);
       print(postResponse.status);
       print(postResponse.message);
+    } else {
+      throw Exception(
+          "${response.statusCode}: Erro ao salvar favoritos no starwarsfavorites!");
     }
   }
 }
