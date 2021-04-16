@@ -20,8 +20,10 @@ class CharacterSearchBloc implements BlocBase {
   }
 
   void _search(String search) async {
-    charactersearch = await api.showSearch(search);
-    _characterController.sink.add(charactersearch);
+    if (search != '') {
+      charactersearch = await api.showSearch(search);
+      _characterController.sink.add(charactersearch);
+    }
   }
 
   @override

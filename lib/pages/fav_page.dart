@@ -20,9 +20,7 @@ class _FavPageState extends State<FavPage> {
         backgroundColor: Colors.black,
         centerTitle: true,
         title: Text("Favorite Page"),
-        actions: <Widget>[
-          Align(alignment: Alignment.center, child: Text("0")),
-        ],
+        actions: <Widget>[],
       ),
       body: StreamBuilder<Map<String, Character>>(
           initialData: {},

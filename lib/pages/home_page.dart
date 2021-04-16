@@ -12,10 +12,8 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: Text("StarWars Wiki"),
-        actions: <Widget>[
-          Align(alignment: Alignment.center, child: Text("0")),
-        ],
+        title: Text("Home"),
+        actions: <Widget>[],
       ),
       body: StreamBuilder(
           stream: bloc.outCharacter,
