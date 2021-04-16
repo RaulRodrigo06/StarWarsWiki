@@ -43,7 +43,7 @@ class Home extends StatelessWidget {
             } else {
               return Center(
                 child: CircularProgressIndicator(
-                  backgroundColor: Colors.white,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow),
                 ),
               );
             }
